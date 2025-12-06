@@ -30,19 +30,12 @@ public class SecurityConfig {
 
                 // 3. Define authorization rules
                 .authorizeHttpRequests(auth -> auth
-                        // Allow POST requests for user registration/login without authentication
-                        .requestMatchers(HttpMethod.POST, "/api/users/**").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/users/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/patients/**").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/patients/**").permitAll()
+                        // Allow all methods (GET/POST/PUT/DELETE) for these paths without authentication
+                        .requestMatchers("/api/users/**", "/api/patients/**", "/api/doctors/**", "/api/specializations/**").permitAll()
 
                         // All other requests must be authenticated
                         .anyRequest().authenticated()
                 );
-
-        // NOTE: We have removed .httpBasic() here.
-        // The actual token validation filter (e.g., JWT filter) will need to be added separately
-        // but this setup correctly disables sessions, which is the first step.
 
         return http.build();
     }
