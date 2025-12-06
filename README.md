@@ -1,6 +1,6 @@
 ## Smart Healthcare Appointment System
 
-###Features:
+### Features:
 1. Doctor, Patient, Admin roles
 2. Appointment booking + cancellation
 3. Slot availability management
